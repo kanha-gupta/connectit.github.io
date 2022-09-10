@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>These are the list of student with their skills</h1>
+<p id="recommend"></p>
+<script type="text/javascript">
+    fetch("/data/recommend.json")
+    .then(function (response){
+        return response.json();
+    })
+    .then(function (recommend){
+        for (var i = 0; i <recommend.length; i++) {
+            document.getElementById("recommend").innerHTML +=
+                recommend[i].name + "->" + recommend[i].Regno +  "->" + recommend[i].skill + "<br />";
+        }
+    })
+    .catch(function (err){
+        console.log(err);
+    })
+</script>
+</body>
+
+</html>
