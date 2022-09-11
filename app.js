@@ -10,12 +10,14 @@ app.use(express.static("views"));
 app.use(express.urlencoded({ extended: true }));
 
 
-
 app.get("/", function (req, res) {
-  res.sendFile(__dirname + "/views/index.html");
+  res.redirect("/Studentlist")
 });
-app.get("/studentlist", function (req, res) {
-  res.sendFile(__dirname + "/Studentlist.html");
+app.get("/Studentlist", function (req, res) {
+  res.sendFile(__dirname +  "/views/Studentlist.html");
+});
+app.get("/signin", function (req, res) {
+  res.sendFile(__dirname + "/views/signin.html");
 
 });
 app.get("/data/recommend.json", function (req,res) {
@@ -34,17 +36,3 @@ app.post("/", function (req, res) {
 app.listen(3000, function () {
   console.log("server is runnin at port 3000");
 });
-
-//below code to fetch api
-// function getData() {
-//     url="/data/recommend.json"
-//     fetch(url).then((response)=>{
-//         return response.json();
-//     }).then((data)=>{
-//         console.log(data)
-//     })
-// }
-//
-// console.log("before running getdata")
-// getData()
-// console.log("After running getData")
